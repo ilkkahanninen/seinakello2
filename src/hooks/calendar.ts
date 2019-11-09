@@ -12,8 +12,6 @@ export const useCalendar = () => {
   const date = formatISODate(time);
   const cal = useFetch<CalendarEntry[]>("/.netlify/functions/cal");
 
-  console.log("haettiin", { date, cal });
-
   return cal
     ? cal.filter(entry => entry.date === date).map(entry => entry.name)
     : [];

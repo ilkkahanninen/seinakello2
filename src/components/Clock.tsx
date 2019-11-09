@@ -35,7 +35,6 @@ const CalendarLabel = styled.div`
 export const Clock: React.FC = () => {
   const time = useClock()
   const calendar = useCalendar()
-  console.log('kalenteri', calendar)
 
   return (
     <Container>

@@ -1,0 +1,250 @@
+{
+  "Headline": {
+    "EffectiveDate": "2019-11-09T19:00:00+02:00",
+    "EffectiveEpochDate": 1573318800,
+    "Severity": 3,
+    "Text": "Sateista säätä luvassa lauantai-iltana – sunnuntai-iltapäivänä",
+    "Category": "rain",
+    "EndDate": "2019-11-10T19:00:00+02:00",
+    "EndEpochDate": 1573405200,
+    "MobileLink": "http://m.accuweather.com/fi/fi/helsinki/133328/extended-weather-forecast/133328?unit=c",
+    "Link": "http://www.accuweather.com/fi/fi/helsinki/133328/daily-weather-forecast/133328?unit=c"
+  },
+  "DailyForecasts": [
+    {
+      "Date": "2019-11-09T07:00:00+02:00",
+      "EpochDate": 1573275600,
+      "Sun": {
+        "Rise": "2019-11-09T08:03:00+02:00",
+        "EpochRise": 1573279380,
+        "Set": "2019-11-09T16:04:00+02:00",
+        "EpochSet": 1573308240
+      },
+      "Moon": {
+        "Rise": "2019-11-09T16:00:00+02:00",
+        "EpochRise": 1573308000,
+        "Set": "2019-11-10T04:44:00+02:00",
+        "EpochSet": 1573353840,
+        "Phase": "WaxingGibbous",
+        "Age": 12
+      },
+      "Temperature": {
+        "Minimum": {
+          "Value": 4.2,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 6.2,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": -0.3,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 4.7,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": -0.3,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 5.3,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "HoursOfSun": 1,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 13,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Hyvä",
+          "CategoryValue": 1,
+          "Type": "Otsoni"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Matala",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Matala",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Matala",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Matala",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 0,
+          "Category": "Matala",
+          "CategoryValue": 1
+        }
+      ],
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Sadekuuroja",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Pari lyhyttä sadekuuroa",
+        "LongPhrase": "Pari lyhyttä sadekuuroa",
+        "PrecipitationProbability": 67,
+        "ThunderstormProbability": 20,
+        "RainProbability": 67,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 13,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 128,
+            "Localized": "Ka",
+            "English": "SE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 33.3,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 140,
+            "Localized": "Ka",
+            "English": "SE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 1.7,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 1.7,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2.5,
+        "HoursOfRain": 2.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 94
+      },
+      "Night": {
+        "Icon": 18,
+        "IconPhrase": "Vesisadetta",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light",
+        "ShortPhrase": "Ajoittain vesisadetta",
+        "LongPhrase": "Ajoittain vesisadetta",
+        "PrecipitationProbability": 65,
+        "ThunderstormProbability": 0,
+        "RainProbability": 65,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 11.1,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 135,
+            "Localized": "Ka",
+            "English": "SE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 14.8,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 119,
+            "Localized": "itäkaakko",
+            "English": "ESE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 6.4,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 6.4,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 3.5,
+        "HoursOfRain": 3.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 94
+      },
+      "Sources": ["AccuWeather"],
+      "MobileLink": "http://m.accuweather.com/fi/fi/helsinki/133328/daily-weather-forecast/133328?day=1&unit=c",
+      "Link": "http://www.accuweather.com/fi/fi/helsinki/133328/daily-weather-forecast/133328?day=1&unit=c"
+    }
+  ]
+}
