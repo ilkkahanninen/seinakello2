@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
 import { useClock, formatTime, formatDate } from "../hooks/clock";
+import { useCalendar } from "../hooks/calendar";
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
 `
 
 const TimeLabel = styled.div`
@@ -14,20 +16,34 @@ const TimeLabel = styled.div`
   line-height: 120px;
 `
 
-const DateLabel = styled.div`
+const CalendarContainer = styled.div`
   width: 50%;
   text-align: left;
   padding-left: 10px;
+`
+
+const DateLabel = styled.div`
   font-size: 24px;
-  line-height: 60px;
+  line-height: 46px;
+`
+
+const CalendarLabel = styled.div`
+  font-size: 16px;
+  line-height: 16px;
 `
 
 export const Clock: React.FC = () => {
-  const { time, calendar } = useClock()
+  const time = useClock()
+  const calendar = useCalendar()
+  console.log('kalenteri', calendar)
+
   return (
     <Container>
       <TimeLabel>{formatTime(time)}</TimeLabel>
-      <DateLabel>{formatDate(time)}</DateLabel>
+      <CalendarContainer>
+        <DateLabel>{formatDate(time)}</DateLabel>
+        {calendar.map(n => <CalendarLabel key={n}>{n}</CalendarLabel>)}
+      </CalendarContainer>
     </Container>
   )
 }

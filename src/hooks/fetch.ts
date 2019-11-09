@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (url: RequestInfo) => {
+export const useFetch = <T>(url: RequestInfo) => {
   const [isActive, setActive] = useState(true);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<T | null>(null);
 
   useEffect(() => {
     if (isActive) {

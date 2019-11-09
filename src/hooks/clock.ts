@@ -9,12 +9,13 @@ export const useClock = () => {
     return () => clearInterval(interval);
   });
 
-  const calendar = useFetch(
-    "http://www.webcal.fi/cal.php?id=3&format=json&start_year=current_year&end_year=current_year&tz=Europe%2FHelsinki"
-  );
-
-  return { time, calendar };
+  return time;
 };
+
+export const formatISODate = (date: Date): String =>
+  [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+    .map(formatNumber)
+    .join("-");
 
 export const formatTime = (time: Date): String =>
   [time.getHours(), time.getMinutes()].map(formatNumber).join(".");
