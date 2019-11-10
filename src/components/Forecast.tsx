@@ -5,9 +5,9 @@ import { useWeather, pickObservations, pickLatest, Observation } from "../hooks/
 import { formatTime } from "../utils/dates"
 
 const Container = styled.div`
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 100px;
 `
 
 export const Forecast: React.FC = () => {
@@ -18,13 +18,17 @@ export const Forecast: React.FC = () => {
   const observations = pickObservations(weather)
   console.log('observations:', observations)
 
-  const forecast = data.DailyForecasts[0]
+  const forecast = data && data.DailyForecasts[0]
 
   return (
     <Container>
       <CurrentWeather data={observations["obs-obs-1-1-t2m"]} />
-      <ForecastPart data={forecast.Day} temperature={forecast.Temperature.Maximum} label="Päivällä" />
-      <ForecastPart data={forecast.Night} temperature={forecast.Temperature.Minimum} label="Yöllä" />
+      {forecast && (
+        <>
+          <ForecastPart data={forecast.Day} temperature={forecast.Temperature.Maximum} label="Päivällä" />
+          <ForecastPart data={forecast.Night} temperature={forecast.Temperature.Minimum} label="Yöllä" />
+        </>
+      )}
     </Container>
   )
 }
@@ -37,7 +41,7 @@ const PartContainer = styled.div`
 `
 
 const ForecastLabel = styled.div`
-  width: 12%;
+  width: 15%;
 `
 
 const WeatherIconContainer = styled.div`
@@ -45,7 +49,7 @@ const WeatherIconContainer = styled.div`
 `
 
 const WeatherIcon = styled.img`
-  display: block;
+  display: inline-block;
   height: 64px;
   width: auto;
   margin-top: 8px;
@@ -53,7 +57,7 @@ const WeatherIcon = styled.img`
 
 const Temperature = styled.span`
   font-size: 48px;
-  width: 23%;
+  width: 20%;
 `
 
 const TemperatureUnit = styled.span`
@@ -73,15 +77,15 @@ const ForecastPart = ({ data, temperature, label }: ForecastPartProps) => {
   return (
     <PartContainer>
       <ForecastLabel>{label}</ForecastLabel>
-      <WeatherIconContainer>
-        <WeatherIcon src={`https://www.accuweather.com/images/weathericons/${data.Icon}.svg`} />
-      </WeatherIconContainer>
       <Temperature>
         <Measurement value={temperature.Value} threshold={0}>
           {temperature.Value}°
           <TemperatureUnit>{temperature.Unit}</TemperatureUnit>
         </Measurement>
       </Temperature>
+      <WeatherIconContainer>
+        <WeatherIcon src={`https://www.accuweather.com/images/weathericons/${data.Icon}.svg`} />
+      </WeatherIconContainer>
       <Description>{data.LongPhrase}</Description>
     </PartContainer>
   )
@@ -90,7 +94,7 @@ const ForecastPart = ({ data, temperature, label }: ForecastPartProps) => {
 
 const TemperatureNow = styled.span`
   font-size: 80px;
-  width: 38%;
+  width: 35%;
 `
 
 interface CurrentWeatherProps {

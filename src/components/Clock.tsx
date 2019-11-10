@@ -7,7 +7,7 @@ import { formatTime, formatDate } from "../utils/dates";
 const Container = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 120px;
 `
 
 const TimeLabel = styled.div`

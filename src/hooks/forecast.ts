@@ -1,8 +1,18 @@
-import testdata from "../testdata/forecast.json";
+import { useFetchJSON } from "./fetch";
+import { buildURL } from "../utils/urls";
 
-export const useForecast = () => {
-  return testdata as OneDayForecast;
-};
+const ACCUWEATHER_API_KEY = process.env.REACT_APP_ACCUWEATHER_API_KEY;
+const URL = buildURL(
+  "http://dataservice.accuweather.com/forecasts/v1/daily/5day/133328",
+  {
+    apikey: ACCUWEATHER_API_KEY || "",
+    language: "fi",
+    details: "true",
+    metric: "true"
+  }
+);
+
+export const useForecast = () => useFetchJSON<OneDayForecast>(URL);
 
 export type ForecastValue = {
   Value: number;
