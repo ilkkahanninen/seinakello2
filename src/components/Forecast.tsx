@@ -5,9 +5,9 @@ import { useWeather, pickObservations, pickLatest, Observation } from "../hooks/
 import { formatTime } from "../utils/dates"
 
 const Container = styled.div`
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
 `
 
 export const Forecast: React.FC = () => {
@@ -37,6 +37,7 @@ const PartContainer = styled.div`
 `
 
 const ForecastLabel = styled.div`
+  font-weight: 100;
   width: 15%;
 `
 
@@ -53,7 +54,7 @@ const WeatherIcon = styled.img`
 
 const Temperature = styled.span`
   font-size: 48px;
-  width: 20%;
+  width: 35%;
 `
 
 const TemperatureUnit = styled.span`
@@ -88,9 +89,11 @@ const ForecastPart = ({ data, temperature, label }: ForecastPartProps) => {
 }
 
 
-const TemperatureNow = styled.span`
-  font-size: 80px;
-  width: 35%;
+const TemperatureNow = styled.div`
+  text-align: center;
+  font-size: 120px;
+  margin-bottom: 50px;
+  font-weight: 100;
 `
 
 interface CurrentWeatherProps {
@@ -100,18 +103,14 @@ interface CurrentWeatherProps {
 const CurrentWeather = ({ data }: CurrentWeatherProps) => {
   const latest = pickLatest(data)
   return (
-    <PartContainer>
-      <ForecastLabel>Nyt</ForecastLabel>
-      <TemperatureNow>
-        {latest && (
-          <Measurement value={latest.value} threshold={0}>
-            {latest.value}°
+    <TemperatureNow>
+      {latest && (
+        <Measurement value={latest.value} threshold={0}>
+          {latest.value}°
             <TemperatureUnit>C</TemperatureUnit>
-          </Measurement>
-        )}
-      </TemperatureNow>
-      <Description>{latest && `Mitattu kello ${formatTime(new Date(latest.time))}`}</Description>
-    </PartContainer>
+        </Measurement>
+      )}
+    </TemperatureNow>
   )
 }
 

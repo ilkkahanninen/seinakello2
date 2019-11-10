@@ -5,33 +5,27 @@ import { useCalendar } from "../hooks/calendar";
 import { formatTime, formatDate } from "../utils/dates";
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 120px;
+  text-align: center;
+  margin-top: 50px;
 `
 
 const TimeLabel = styled.div`
-  width: 50%;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 120px;
-  line-height: 120px;
+  font-size: 200px;
+  font-weight: 100;
 `
 
 const CalendarContainer = styled.div`
-  width: 50%;
-  text-align: left;
-  padding-left: 10px;
 `
 
 const DateLabel = styled.div`
-  font-size: 24px;
-  line-height: 46px;
+  font-size: 32px;
+  margin: 0 0 50px;
+  font-weight: 100;
 `
 
 const CalendarLabel = styled.div`
   font-size: 16px;
-  line-height: 16px;
+  line-height: 24px;
 `
 
 export const Clock: React.FC = () => {
