@@ -1,5 +1,6 @@
-import { useClock, formatISODate } from "./clock";
-import { useFetch } from "./fetch";
+import { useClock } from "./clock";
+import { useFetchJSON } from "./fetch";
+import { formatISODate } from "../utils/dates";
 
 export interface CalendarEntry {
   date: string;
@@ -10,7 +11,7 @@ export interface CalendarEntry {
 export const useCalendar = () => {
   const time = useClock();
   const date = formatISODate(time);
-  const cal = useFetch<CalendarEntry[]>("/.netlify/functions/cal");
+  const cal = useFetchJSON<CalendarEntry[]>("/.netlify/functions/cal");
 
   return cal
     ? cal.filter(entry => entry.date === date).map(entry => entry.name)

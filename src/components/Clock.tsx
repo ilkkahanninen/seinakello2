@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components'
-import { useClock, formatTime, formatDate } from "../hooks/clock";
+import { useClock } from "../hooks/clock";
 import { useCalendar } from "../hooks/calendar";
+import { formatTime, formatDate } from "../utils/dates";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 80px;
 `
 
 const TimeLabel = styled.div`

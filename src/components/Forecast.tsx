@@ -1,6 +1,8 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import styled from "styled-components"
 import { useForecast, ForecastData, ForecastValue } from "../hooks/forecast"
+import { useWeather, pickObservations, pickLatest, Observation } from "../hooks/weather"
+import { formatTime } from "../utils/dates"
 
 const Container = styled.div`
   max-width: 600px;
@@ -9,12 +11,18 @@ const Container = styled.div`
 `
 
 export const Forecast: React.FC = () => {
+  const weather = useWeather()
   const data = useForecast()
+
+  console.log('raw data:', weather)
+  const observations = pickObservations(weather)
+  console.log('observations:', observations)
 
   const forecast = data.DailyForecasts[0]
 
   return (
     <Container>
+      <CurrentWeather data={observations["obs-obs-1-1-t2m"]} />
       <ForecastPart data={forecast.Day} temperature={forecast.Temperature.Maximum} label="Päivällä" />
       <ForecastPart data={forecast.Night} temperature={forecast.Temperature.Minimum} label="Yöllä" />
     </Container>
@@ -40,6 +48,7 @@ const WeatherIcon = styled.img`
   display: block;
   height: 64px;
   width: auto;
+  margin-top: 8px;
 `
 
 const Temperature = styled.span`
@@ -68,10 +77,56 @@ const ForecastPart = ({ data, temperature, label }: ForecastPartProps) => {
         <WeatherIcon src={`https://www.accuweather.com/images/weathericons/${data.Icon}.svg`} />
       </WeatherIconContainer>
       <Temperature>
-        {temperature.Value}°
-        <TemperatureUnit>{temperature.Unit}</TemperatureUnit>
+        <Measurement value={temperature.Value} threshold={0}>
+          {temperature.Value}°
+          <TemperatureUnit>{temperature.Unit}</TemperatureUnit>
+        </Measurement>
       </Temperature>
       <Description>{data.LongPhrase}</Description>
     </PartContainer>
   )
 }
+
+
+const TemperatureNow = styled.span`
+  font-size: 80px;
+  width: 38%;
+`
+
+interface CurrentWeatherProps {
+  data?: Observation[]
+}
+
+const CurrentWeather = ({ data }: CurrentWeatherProps) => {
+  const latest = pickLatest(data)
+  return (
+    <PartContainer>
+      <ForecastLabel>Nyt</ForecastLabel>
+      <TemperatureNow>
+        {latest && (
+          <Measurement value={latest.value} threshold={0}>
+            {latest.value}°
+            <TemperatureUnit>C</TemperatureUnit>
+          </Measurement>
+        )}
+      </TemperatureNow>
+      <Description>{latest && `Mitattu kello ${formatTime(new Date(latest.time))}`}</Description>
+    </PartContainer>
+  )
+}
+
+//
+
+interface MeasurementProps {
+  value: number,
+  threshold: number,
+  children: ReactNode
+}
+
+const MeasurementAbove = styled.span`color: #FF2255`
+const MeasurementBelow = styled.span`color: rgb(40, 138, 219)`
+
+const Measurement = ({ value, threshold, children }: MeasurementProps) =>
+  value >= threshold
+    ? <MeasurementAbove>{children}</MeasurementAbove>
+    : <MeasurementBelow>{children}</MeasurementBelow>
