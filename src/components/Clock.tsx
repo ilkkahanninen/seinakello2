@@ -10,8 +10,9 @@ const Container = styled.div`
 `
 
 const TimeLabel = styled.div`
-  font-size: 240px;
+  font-size: 180px;
   font-weight: 100;
+  margin-bottom: 40px;
 `
 
 const CalendarContainer = styled.div`
