@@ -4,7 +4,7 @@ import { useEveryNMinutes } from "./clock";
 
 const ACCUWEATHER_API_KEY = process.env.REACT_APP_ACCUWEATHER_API_KEY;
 const URL = buildURL(
-  "http://dataservice.accuweather.com/forecasts/v1/daily/5day/133328",
+  "https://dataservice.accuweather.com/forecasts/v1/daily/5day/133328",
   {
     apikey: ACCUWEATHER_API_KEY || "",
     language: "fi",
