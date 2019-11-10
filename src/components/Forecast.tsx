@@ -13,11 +13,7 @@ const Container = styled.div`
 export const Forecast: React.FC = () => {
   const weather = useWeather()
   const data = useForecast()
-
-  console.log('raw data:', weather)
   const observations = pickObservations(weather)
-  console.log('observations:', observations)
-
   const forecast = data && data.DailyForecasts[0]
 
   return (

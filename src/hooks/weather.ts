@@ -1,4 +1,5 @@
 import { useFetchXML } from "./fetch";
+import { useEveryNMinutes } from "./clock";
 
 export type Observation = {
   time: string;
@@ -9,10 +10,13 @@ export type Observations = {
   [key: string]: Observation[];
 };
 
-export const useWeather = () =>
-  useFetchXML(
-    "https://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi%3A%3Aobservations%3A%3Aweather%3A%3Atimevaluepair&crs=EPSG%3A%3A3067&fmisid=100971"
+export const useWeather = () => {
+  const cron = useEveryNMinutes(10);
+  return useFetchXML(
+    "https://opendata.fmi.fi/wfs?request=getFeature&storedquery_id=fmi%3A%3Aobservations%3A%3Aweather%3A%3Atimevaluepair&crs=EPSG%3A%3A3067&fmisid=100971",
+    cron
   );
+};
 
 export const pickObservations = (data: any): Observations =>
   data && data["wfs:FeatureCollection"]
@@ -27,8 +31,6 @@ export const pickObservations = (data: any): Observations =>
           type: result["$"]["gml:id"],
           series: result["wml2:point"].map((point: any) => {
             const pt = point["wml2:MeasurementTVP"][0];
-            const time = pt["wml2:time"][0];
-            const value = pt["wml2:value"][0];
             return {
               time: pt["wml2:time"][0],
               value: pt["wml2:value"][0]

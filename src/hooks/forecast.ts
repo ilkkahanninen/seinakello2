@@ -1,5 +1,6 @@
 import { useFetchJSON } from "./fetch";
 import { buildURL } from "../utils/urls";
+import { useEveryNMinutes } from "./clock";
 
 const ACCUWEATHER_API_KEY = process.env.REACT_APP_ACCUWEATHER_API_KEY;
 const URL = buildURL(
@@ -12,7 +13,12 @@ const URL = buildURL(
   }
 );
 
-export const useForecast = () => useFetchJSON<OneDayForecast>(URL);
+export const useForecast = ACCUWEATHER_API_KEY
+  ? () => {
+      const cron = useEveryNMinutes(60);
+      return useFetchJSON<OneDayForecast>(URL, cron);
+    }
+  : () => require("../testdata/forecast.json") as OneDayForecast;
 
 export type ForecastValue = {
   Value: number;

@@ -10,3 +10,8 @@ export const useClock = () => {
 
   return time;
 };
+
+export const useEveryNMinutes = (minutes: number) => {
+  const time = useClock();
+  return `${time.getHours()}/${Math.floor(time.getMinutes() / minutes)}`;
+};
