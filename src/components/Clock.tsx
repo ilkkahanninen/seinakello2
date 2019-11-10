@@ -10,22 +10,24 @@ const Container = styled.div`
 `
 
 const TimeLabel = styled.div`
-  font-size: 200px;
+  font-size: 240px;
   font-weight: 100;
 `
 
 const CalendarContainer = styled.div`
+  margin: 0 0 50px;
 `
 
 const DateLabel = styled.div`
   font-size: 32px;
-  margin: 0 0 50px;
   font-weight: 100;
+  margin-bottom: 15px;
 `
 
 const CalendarLabel = styled.div`
   font-size: 16px;
   line-height: 24px;
+  font-weight: 200;
 `
 
 export const Clock: React.FC = () => {
@@ -37,7 +39,7 @@ export const Clock: React.FC = () => {
       <TimeLabel>{formatTime(time)}</TimeLabel>
       <CalendarContainer>
         <DateLabel>{formatDate(time)}</DateLabel>
-        {calendar.map(n => <CalendarLabel key={n}>{n}</CalendarLabel>)}
+        {calendar.map(e => <DateLabel key={e.name}>{e.name}</DateLabel>)}
       </CalendarContainer>
     </Container>
   )

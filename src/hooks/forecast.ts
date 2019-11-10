@@ -2,7 +2,9 @@ import { useFetchJSON } from "./fetch";
 import { buildURL } from "../utils/urls";
 import { useEveryNMinutes } from "./clock";
 
-const ACCUWEATHER_API_KEY = process.env.REACT_APP_ACCUWEATHER_API_KEY;
+const ACCUWEATHER_API_KEY =
+  !process.env.REACT_APP_USE_TESTDATA &&
+  process.env.REACT_APP_ACCUWEATHER_API_KEY;
 const URL = buildURL(
   "https://dataservice.accuweather.com/forecasts/v1/daily/5day/133328",
   {

@@ -2,12 +2,11 @@ import React, { ReactNode } from "react"
 import styled from "styled-components"
 import { useForecast, ForecastData, ForecastValue } from "../hooks/forecast"
 import { useWeather, pickObservations, pickLatest, Observation } from "../hooks/weather"
-import { formatTime } from "../utils/dates"
 
 const Container = styled.div`
   max-width: 600px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
 `
 
 export const Forecast: React.FC = () => {
@@ -49,11 +48,11 @@ const WeatherIcon = styled.img`
   display: inline-block;
   height: 64px;
   width: auto;
-  margin-top: 8px;
+  margin-top: 15px;
 `
 
 const Temperature = styled.span`
-  font-size: 48px;
+  font-size: 50px;
   width: 35%;
 `
 
@@ -91,7 +90,7 @@ const ForecastPart = ({ data, temperature, label }: ForecastPartProps) => {
 
 const TemperatureNow = styled.div`
   text-align: center;
-  font-size: 120px;
+  font-size: 160px;
   margin-bottom: 50px;
   font-weight: 100;
 `

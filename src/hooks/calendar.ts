@@ -6,6 +6,9 @@ export interface CalendarEntry {
   date: string;
   name: string;
   url: string;
+  source: "goodToKnow" | "holiday";
+  description?: string;
+  flag_day?: boolean;
 }
 
 export const useCalendar = () => {
@@ -13,7 +16,5 @@ export const useCalendar = () => {
   const date = formatISODate(time);
   const cal = useFetchJSON<CalendarEntry[]>("/.netlify/functions/cal", date);
 
-  return cal
-    ? cal.filter(entry => entry.date === date).map(entry => entry.name)
-    : [];
+  return cal ? cal.filter(entry => entry.date === date) : [];
 };
